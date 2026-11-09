@@ -10,17 +10,15 @@ public class Button extends Actor
 {
     private RoomData room;
     private boolean clicked;
-    public Button()
-    {
-        GreenfootImage image = new GreenfootImage(10,10);
-        image.setColor(Color.GRAY);
-        image.fill();
-        setImage(image);
-    }
     public Button(RoomData room)
     {
         this.room = room;
         clicked = false;
+        
+        GreenfootImage image = new GreenfootImage(10,10);
+        image.setColor(Color.GRAY);
+        image.fill();
+        setImage(image);
     }
     public void act()
     {

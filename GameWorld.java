@@ -9,10 +9,12 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class GameWorld extends World
 {
     private RoomManager roomManager;
+    RoomData startingRoom = roomManager.getRoom(0);
     public GameWorld()
     {    
         super(1000, 600, 1); 
         roomManager = new RoomManager();
+        RoomData startingRoom = roomManager.getRoom(0);
         RoomMenuIcon icon = new RoomMenuIcon();
         addObject(icon, 970, 30);
         getBackground().setColor(Color.BLACK);
@@ -21,7 +23,7 @@ public class GameWorld extends World
         {
             for(int j = 0; j < 10; j++)
             {
-                Button button = new Button();
+                Button button = new Button(startingRoom);
                 
                 int x = 50*j + 100;
                 int y = 300 - 25*i;

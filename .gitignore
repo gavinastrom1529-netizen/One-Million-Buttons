@@ -6,3 +6,6 @@
 *.ear
 hs_err_pid*
 .greenfoot/
+*.class
+*.ctxt
+.DS_Store
