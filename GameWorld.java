@@ -8,8 +8,9 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class GameWorld extends World
 {
+    private int currentRoomIndex = 0;
     private RoomManager roomManager;
-    RoomData startingRoom = roomManager.getRoom(0);
+    private RoomMenu roomMenu;
     public GameWorld()
     {    
         super(1000, 600, 1); 
@@ -38,14 +39,38 @@ public class GameWorld extends World
     }
     public void loadRoom(RoomData room)
     {
-        System.out.println("Entering Room #" + room.getRoomNumber());
+        if(!room.isUnlocked())
+        {
+            System.out.println("Not available");
+        }
+        closeRoomMenu();
+        
     }
     public void openRoomMenu()
     {
-        System.out.println("Opening room menu");
+        if(roomMenu == null)
+        {
+            roomMenu = new RoomMenu(roomManager);
+            addObject(roomMenu, 200, 300);
+            roomMenu.refreshList();
+        }
     }
     public void closeRoomMenu()
     {
-        System.out.println("Closing room menu");
+        if(roomMenu != null)
+        {
+            removeObjects(getObjects(RoomEntry.class));
+            removeObject(roomMenu);
+            roomMenu = null;
+        }
+    }
+    public void enterRoom()
+    {
+        GameWorld game = (GameWorld) getWorld();
+        game.loadRoom(room);
+    }
+    public void act()
+    {
+        roomManager.completeRoom(currentRoomIndex);
     }
 }

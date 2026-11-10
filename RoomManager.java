@@ -32,15 +32,17 @@ public class RoomManager
     }
     public void completeRoom(int index)
     {
-        RoomData room = rooms.get(index);
-        if(room.getButtonsClicked() == room.getTotalButtons())
-        {
-            room.complete();
-        }
+    RoomData room = rooms.get(index);
+
+    if(room.getButtonsClicked() == room.getTotalButtons())
+    {
+        room.complete();
+
         if(index + 1 < rooms.size())
         {
-            rooms.get(index+1).unlock();
+            rooms.get(index + 1).unlock();
         }
+    }
     }
     /**
      * An example of a method - replace this comment with your own
