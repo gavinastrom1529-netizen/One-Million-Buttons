@@ -34,7 +34,11 @@ public class RoomEntry extends Actor
     public void act()
     {
         checkClick();
-        checkHover();
+        // Entering a room removes this entry from the world.
+        if(getWorld() != null)
+        {
+            checkHover();
+        }
     }
     public void checkClick()
     {
@@ -52,9 +56,8 @@ public class RoomEntry extends Actor
     }
     public void enterRoom()
     {
-        //Game game = (Game) getWorld();
-        //game.loadRoom(room);
-        System.out.println("Entering Room #" + room.getRoomNumber());
+        GameWorld game = (GameWorld) getWorld();
+        game.loadRoom(room);
     }
     public void displayLockedMessage()
     {

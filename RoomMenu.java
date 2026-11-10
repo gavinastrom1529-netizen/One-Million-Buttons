@@ -16,6 +16,8 @@ public class RoomMenu extends Actor
         this.manager = manager;
         firstVisibleRoom = 0;
         roomsPerPage = 5;
+        // This actor manages the entries; it needs no visible image itself.
+        setImage(new GreenfootImage(1, 1));
     }
     
     public void scroll(int direction)

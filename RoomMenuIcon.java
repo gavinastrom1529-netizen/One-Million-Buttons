@@ -8,11 +8,8 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class RoomMenuIcon extends Actor
 {
-    private boolean menuOpen;
     public RoomMenuIcon()
     {
-        menuOpen = false;
-        
         GreenfootImage image = new GreenfootImage(40, 40);
         image.setColor(Color.GRAY);
         image.fill();
@@ -27,15 +24,13 @@ public class RoomMenuIcon extends Actor
         if(Greenfoot.mouseClicked(this))
         {
             GameWorld game = (GameWorld) getWorld();
-            if(menuOpen)
+            if(game.isRoomMenuOpen())
             {
                 game.closeRoomMenu();
-                menuOpen = false;
             }
             else
             {
                 game.openRoomMenu();
-                menuOpen = true;
             }
         }
     }

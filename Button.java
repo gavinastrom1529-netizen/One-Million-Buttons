@@ -22,6 +22,12 @@ public class Button extends Actor
     }
     public void act()
     {
+        GameWorld game = (GameWorld) getWorld();
+        if(game == null || game.isRoomMenuOpen())
+        {
+            return;
+        }
+
         if(Greenfoot.mouseClicked(this) && !clicked)
         {
             clicked = true;
